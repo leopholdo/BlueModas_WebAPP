@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center align-items-center checkout-container pt-5">
+    <div class="wrapper" [class]="{'wrapper-success': orderResponseEntity.order}">
+        <div class="modal-head text-center p-2">
+            <h1>blue<span>modas</span></h1>
+        </div>
+
+        <form class="p-4 d-flex flex-column" *ngIf="!orderResponseEntity.order" (submit)="completeCheckout()" ngNativeValidate>
+
+            <label>E-mail</label>
+            <input type="email" name="tclEmail" (blur)="getClient(client.tclEmail)" [(ngModel)]="client.tclEmail" required>
+
+            <label>Nome</label>
+            <input type="text" name="tclName" [(ngModel)]="client.tclName" required>
+
+            <label>Telefone</label>
+            <input type="tel" name="tclPhone" [(ngModel)]="client.tclPhone" class="col-md-5" required>
+
+            <button class="mt-5 align-self-center" type="submit">
+                Concluir compra
+                <i class="bi bi-cart-check-fill"></i>
+            </button>
+        </form>
+
+        <div class="d-flex p-3 flex-wrap" *ngIf="orderResponseEntity.order">
+            <div class="d-flex flex-column col-md-5 pb-2">
+                <h4 class="fw-bold">Pedido nº {{orderResponseEntity.order.torID}}</h4>
+
+                <h5 class="fw-bold mt-2">Dados do cliente</h5>
+
+                <span class="fw-bold">E-mail: </span>
+                <span>{{orderResponseEntity.client.tclEmail}}</span>
+
+                <span class="mt-2 fw-bold">Nome: </span>
+                <span>{{orderResponseEntity.client.tclName}}</span>
+
+                <span class="mt-2 fw-bold">Telefone: </span>
+                <span>{{orderResponseEntity.client.tclPhone}}</span>
+            </div>
+
+            <div class="d-flex flex-column col-md-7 products">
+                <h5 class="fw-bold">Produtos</h5>
+
+                <div class="item row mb-1 mx-0" *ngFor="let item of orderResponseEntity.productBasketList">
+
+                    <div class="col-md-2 col-3">
+                        <img class="pic" [src]="item.tabProduct.tprImage"
+                            onerror="this.src='https://images.unsplash.com/photo-1572804013427-4d7ca7268217?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80';">
+                    </div>
+
+                    <div class="col-md-4 col-9 d-flex flex-column">
+                        <span class="fw-bold">Produto: </span>
+                        <span>{{item.tabProduct.tprName}}</span>
+                    </div>
+
+                    <div class="col-md-2 col-4 d-flex flex-column align-items-center">
+                        <span class="fw-bold">Preço un:</span>
+                        <span>R${{item.tabProduct.tprPrice}}</span>
+                    </div>
+
+                    <div class="col-md-2 col-4 d-flex flex-column align-items-center">
+                        <span class="fw-bold">Quantidade:</span>
+                        <span>{{item.tpbQuantity}}</span>
+                    </div>
+
+                    <div class="col-md-2 col-4 d-flex flex-column align-items-center">
+                        <span class="fw-bold">Total:</span>
+                        <span>R${{(item.tabProduct.tprPrice * item.tpbQuantity).toFixed(2)}}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

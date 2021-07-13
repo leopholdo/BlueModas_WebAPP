@@ -1,0 +1,8 @@
+<nav class="navbar bg-light">
+    <a class="nav-item nav-link logo ms-4" href="/">blue<span>modas</span></a>
+    
+    <div class="nav-item cart ms-auto me-4" *ngIf="!hideCartIcon">
+        <i (click)="toggleCartVisibility()" class="bi bi-cart fs-4"></i>
+        <span>{{cartCount}}</span>
+    </div>
+</nav>

@@ -1,0 +1,70 @@
+.checkout-container {
+    height: 100%;
+}
+
+.wrapper {
+    width: 30%;
+    height: 25rem;
+    border: 1px solid #dedede;
+    background-color: white;
+    transition: width .5s;
+}
+
+.wrapper-success {
+    width: 80%;
+    height: 80vh;
+}
+
+.modal-head {
+    border-bottom: 1px solid #dedede;
+    color: #3b9bbd;
+
+    h1{
+        font-weight: bold;
+    }
+
+    span{
+        font-weight: normal;
+    }
+}
+
+.products {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+button {
+    width: 15rem;
+    height: 3rem;
+    border:1px solid #e5e5e5;
+    font-size:16px;
+    border-radius:4px;
+    transition:all .3s;
+    cursor: pointer;
+    background:#3b9bbd;
+    color:#fff
+}
+button:hover {
+    box-shadow:0 0 10px rgba(0,0,0,.5)
+}
+
+.item {
+    width: 100%;
+    border: 1px solid #dedede;
+}
+
+img {
+    width: 5rem;
+}
+
+@media only screen and (max-width:990px) {
+    .wrapper {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:770px) {
+    .wrapper {
+        border: none;
+    }
+}

@@ -1,0 +1,32 @@
+<div class="sidebar" [ngClass]="{'sidebar-open' : isCartVisible && !hideCartIcon}">
+    <div class="d-flex sidebar-header align-items-center">
+        <h5 class="p-2 m-0"> Minha sacola</h5>
+        <i class="bi bi-x-lg ms-auto p-2" (click)="toggleCartVisibility()"></i>
+    </div>
+
+    <div class="d-flex flex-column wrapper">
+        <div class="item mb-1 d-flex" *ngFor="let item of listBasket">
+            <img [src]="item.product.tprImage"
+                onerror="this.src='https://images.unsplash.com/photo-1572804013427-4d7ca7268217?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80';">
+
+            <div class="product-description d-flex flex-column ms-2">
+                <span class="desc-top">{{item.product.tprName}}</span>
+
+                <div class="d-flex mt-3">
+                    <span>R${{replaceCurrency(item.product.tprPrice)}}</span>
+
+                    <i class="bi bi-dash-circle ms-auto" (click)="removeProduct(item)"></i>
+                    <span class="px-2"> {{item.quantity}} </span>
+                    <i class="bi bi-plus-circle" (click)="addProduct(item)"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column" *ngIf="isCartVisible && !hideCartIcon && listBasket.length > 0">
+        <span class="mx-3">Total: R${{cartTotal.toFixed(2)}}</span>
+        <button class="mt-3" routerLink="/checkout">
+            Finalizar compra
+        </button>
+    </div>
+</div>

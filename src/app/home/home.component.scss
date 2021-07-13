@@ -1,0 +1,30 @@
+.home-container {
+    max-height: 40rem;
+
+    img{
+        max-height: 40rem;
+        max-width: 100%;
+    }
+}
+
+.home-description {
+    background-color: #3b9bbd;
+    height: 40rem;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    h1{
+        font-weight: bold;
+    }
+
+    span{
+        font-weight: normal;
+    }
+}
+
+@media only screen and (max-width: 920px) {
+    .home-description {
+        display: none !important;
+    }
+}

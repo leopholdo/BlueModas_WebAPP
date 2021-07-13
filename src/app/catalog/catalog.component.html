@@ -1,0 +1,21 @@
+<div class="d-flex flex-column">
+    <h3 class="store-title align-self-center"> Conheça nossa loja </h3>
+
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-6 p-3" *ngFor="let product of listProducts">
+            <div class="product-grid text-center">
+                <div class="product-image">
+                    <img class="pic" [src]="product.tprImage"
+                        onerror="this.src='https://images.unsplash.com/photo-1572804013427-4d7ca7268217?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80';">
+                </div>
+                <div class="product-content">
+                    <a class="title fs-6 text-body">{{product.tprName}}</a>
+
+                    <div class="price fw-bold mb-2"> R${{replaceCurrency(product.tprPrice)}} </div>
+
+                    <a class="btn-add fw-bold mb-2 p-2" (click)="addItem(product)">Adicionar ao carrinho</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
